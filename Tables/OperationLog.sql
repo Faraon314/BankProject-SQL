@@ -8,6 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+
 CREATE TABLE [dbo].[OperationLog](
 	[AccountID] [int] NOT NULL,
 	[OperationType] [nchar](10) NOT NULL,
@@ -17,4 +18,9 @@ CREATE TABLE [dbo].[OperationLog](
 
 GO
 
+
+ALTER TABLE [dbo].[OperationLog]  ADD   CHECK  ([Summ]>=0)
+GO
+ALTER TABLE [dbo].[OperationLog]  ADD   CHECK  ([OperationType]='пополнение' or [OperationType]='списание' )
+GO
 

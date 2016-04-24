@@ -11,4 +11,6 @@ insert into OperationLog values (@ac_id_in,'пополнение',@amout,GETDATE());
 insert into OperationLog values (@ac_id_out,'списание',@amout,GETDATE()); 
 
 
-exec MoneyMove @amout=10,@ac_id_out=1,@ac_id_in=2 
+exec MoneyMove @amout=10,@ac_id_out=5,@ac_id_in=4 
+
+select * from OperationLog

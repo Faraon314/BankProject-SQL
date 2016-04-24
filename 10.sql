@@ -1,3 +1,4 @@
 use BankDataBase
 
-select id,currency,data_open,data_close,money from AccountList join CurrencyList on CurrencyList.name=AccountList.currency
+select CurrencyList.name,AccountNumber=count(CurrencyList.name)
+ from AccountList join CurrencyList on IsoNumber=AccountList.currency_id group by CurrencyList.name

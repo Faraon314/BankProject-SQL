@@ -1,7 +1,7 @@
 USE [BankDataBase]
 GO
 
-/****** Object:  Table [dbo].[AccountList]    Script Date: 21.04.2016 6:13:36 ******/
+/****** Object:  Table [dbo].[AccountList]    Script Date: 23.04.2016 2:46:13 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,7 +10,7 @@ GO
 
 CREATE TABLE [dbo].[AccountList](
 	[id] [int] NOT NULL,
-	[currency] [nchar](10) NOT NULL,
+	[currency_id] [int] NOT NULL,
 	[data_open] [date] NOT NULL,
 	[data_close] [date] NOT NULL,
 	[money] [int] NOT NULL,

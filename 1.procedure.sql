@@ -4,11 +4,15 @@ alter proc MoneyMove(
 @ac_id_out int,
 @ac_id_in int
 )as 
+if((select currency_id from AccountList where @ac_id_out=id)=(select currency_id from AccountList where @ac_id_in=id))
+	begin
+	--trigger update table by itself
+	insert into OperationLog values (@ac_id_in,'пополнение',@amout,GETDATE()); 
+	insert into OperationLog values (@ac_id_out,'списание',@amout,GETDATE()); 
+	end
+	else select 'different currency'
 
-insert into OperationLog values (@ac_id_in,'пополнение',@amout,GETDATE()); 
-insert into OperationLog values (@ac_id_out,'списание',@amout,GETDATE()); 
+exec MoneyMove @amout=90,@ac_id_out=17,@ac_id_in=15
 
-
-exec MoneyMove @amout=10,@ac_id_out=5,@ac_id_in=4 
-
+select * from AccountList
 select * from OperationLog

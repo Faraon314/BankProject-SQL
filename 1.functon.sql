@@ -21,23 +21,24 @@ returns real
 	begin
 	declare @s real
 	set @s=9.0;
-
+	-- get first-opened account
     declare @date_open datetime;
 	set @date_open=(select TOP 1 data_open from AccountList where client_id=@client_id order by data_open ASC)
-
+	--calc years
 	declare @full_year int;
 	set @full_year=year(getdate())-year(@date_open);
 	set @s=@s-@full_year*0.1;
-
+	--calc income and outcome
 	declare @income real
 	set @income= (select summa from SumIncome where @client_id=id)
 	declare @outcome real
 	set @outcome= (select summa from SumOutcome where @client_id=id)
+	--calc per_cent
 	if(@outcome=0) 
 		set @s=@s-0.5
 	else 
 		if(@income/@outcome>1) set @s=@s-@income/@outcome*0.1;
-	
+	--set per-cent at 4 if @s<4
 	if (@s<4) set @s=4
 
 	return @s;

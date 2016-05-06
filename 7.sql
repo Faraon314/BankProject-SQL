@@ -1,3 +1,3 @@
 use BankDataBase
 
-select Adress from  ClientList group by Adress
+select Town from  ClientList group by Town

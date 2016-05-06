@@ -1,3 +1,3 @@
 use BankDataBase
 
-select * from ClientList where Adress='Москва'
+select * from ClientList where Town='Москва'

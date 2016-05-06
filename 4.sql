@@ -10,3 +10,5 @@ select id,ammount=0 from AccountList left join OperationLog on AccountID=id wher
 SELECT   * from operationNumbersZero  
 UNION 
 SELECT   * from operationNumbers  
+
+select AccountID from OperationLog
